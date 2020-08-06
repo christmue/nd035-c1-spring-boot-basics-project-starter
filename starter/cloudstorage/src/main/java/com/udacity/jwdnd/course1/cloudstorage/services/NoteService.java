@@ -16,12 +16,24 @@ public class NoteService {
         this.noteMapper = noteMapper;
     }
 
-    public void addNote(Note note) {
-        noteMapper.insert(note);
+    public int addNote(Note note) {
+        return this.noteMapper.insert(note);
+    }
+
+    public Note getNote(Integer noteId) {
+        return this.noteMapper.getNote(noteId);
+    }
+
+    public int editNote(Note note) {
+        return this.noteMapper.update(note.getNoteTitle(), note.getNoteDescription(), note.getNoteId());
     }
 
     public List<Note> getAllNotes(Integer userId) {
-        return noteMapper.getAllNotes(userId);
+        return this.noteMapper.getAllNotes(userId);
+    }
+
+    public int deleteNote(Integer noteId) {
+        return this.noteMapper.delete(noteId);
     }
 
 }

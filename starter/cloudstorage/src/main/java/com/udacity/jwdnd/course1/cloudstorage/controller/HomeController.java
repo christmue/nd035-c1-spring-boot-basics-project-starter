@@ -25,17 +25,12 @@ public class HomeController {
     }
 
     @GetMapping()
-    public String getHomePage() {
-        return "home";
-    }
-
-    @PostMapping()
-    public String addNote(Authentication authentication, Model model, Note note) {
-        note.setUserId(this.userService.getUser(authentication.getName()).getUserId());
-        this.noteService.addNote(note);
+    public String getHomePage(Authentication authentication, Model model) {
         model.addAttribute("notes", this.noteService.getAllNotes(this.userService.getUser(authentication.getName()).getUserId()));
         return "home";
     }
+
+
 
 
 }
