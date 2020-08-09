@@ -41,7 +41,7 @@ public class CredentialController {
 
     @GetMapping("/delete/{credentialId}")
     public String deleteCredential(@PathVariable("credentialId") Integer credentialId, Model model) {
-        int result = credentialService.deleteCredential(credentialId);
+        int result = this.credentialService.deleteCredential(credentialId);
         model.addAttribute("saved", result > 0);
         return "result";
     }
