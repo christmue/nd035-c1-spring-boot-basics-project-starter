@@ -12,7 +12,7 @@
         <div class="container">
             <div id="logoutDiv">
                 <form action="#" th:action="@{/logout}" method="POST">
-                    <button type="submit" class="btn btn-secondary float-right">Logout</button>
+                    <button type="submit" class="btn btn-secondary float-right" id ="logout-button">Logout</button>
                 </form>
             </div>
             <div id="contentDiv" style="clear: right;">
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="nav-notes" role="tabpanel" aria-labelledby="nav-notes-tab">
-                        <button style="margin: 0.25em;" type="button" class="btn btn-info float-right" onclick="showNoteModal()">
+                        <button style="margin: 0.25em;" type="button" class="btn btn-info float-right" id="show-note-modal" onclick="showNoteModal()">
                             + Add a New Note
                         </button>
 
@@ -81,8 +81,8 @@
                                             <button type="button" class="btn btn-success" th:onclick="showNoteModal([[${note.noteId}]],[[${note.noteTitle}]], [[${note.noteDescription}]])">Edit</button>
                                             <a class="btn btn-danger" th:href="@{'note/delete/' + ${note.noteId}}">Delete</a>
                                         </td>
-                                        <th scope="row" th:text="${note.noteTitle}">Example Note Title</th>
-                                        <td th:text="${note.noteDescription}">Example Note Description </td>
+                                        <th scope="row" th:text="${note.noteTitle}" id="note-title-row">Example Note Title</th>
+                                        <td th:text="${note.noteDescription}" id="note-description-row">Example Note Description </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -102,7 +102,7 @@
                                             <input type="hidden" name="noteId" id="note-id">
                                             <div class="form-group">
                                                 <label for="note-title" class="col-form-label">Title</label>
-                                                <input type="text" name= "noteTitle" class="form-control" id="note-title" maxlength="20" required>
+                                                <input type="text" name= "noteTitle"  class="form-control" id="note-title" maxlength="20" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="note-description" class="col-form-label">Description</label>
@@ -113,14 +113,14 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" onclick="$('#noteSubmit').click();">Save changes</button>
+                                        <button type="button" class="btn btn-primary" onclick="$('#noteSubmit').click();" id="note-submit-button">Save changes</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-credentials" role="tabpanel" aria-labelledby="nav-credentials-tab">
-                        <button style="margin: 0.25em;" type="button" class="btn btn-info float-right" onclick="showCredentialModal()">
+                        <button style="margin: 0.25em;" type="button" class="btn btn-info float-right" id="add-new-credential-button" onclick="showCredentialModal()">
                             + Add a New Credential
                         </button>
 
